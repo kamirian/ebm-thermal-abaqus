@@ -1,33 +1,39 @@
 # Thermal model of powder-bed electron-beam melting in Abaqus
 
-A transient heat-transfer model of one electron-beam scan over a titanium-alloy powder bed, built in Abaqus/Standard. The moving beam is a user subroutine (DFLUX) that deposits a Gaussian heat source in the powder layer of a preheated block. The model setup follows N. An et al., "Implementation of Abaqus user subroutines and plugin for thermal analysis of powder-bed electron-beam-melting additive manufacturing process," *Materials Today Communications* 27 (2021) 102307, [doi:10.1016/j.mtcomm.2021.102307](https://doi.org/10.1016/j.mtcomm.2021.102307).
+A transient heat-transfer model of one electron-beam scan over a Ti-6Al-4V powder bed, built in Abaqus/Standard. The moving beam is a user subroutine (DFLUX) that deposits a Gaussian heat source in the powder layer of a preheated block. The model setup follows N. An et al., "Implementation of Abaqus user subroutines and plugin for thermal analysis of powder-bed electron-beam-melting additive manufacturing process," *Materials Today Communications* 27 (2021) 102307, [doi:10.1016/j.mtcomm.2021.102307](https://doi.org/10.1016/j.mtcomm.2021.102307).
 
 Course project, Shiraz University, 2022.
 
-![Temperature along the scan path at the end of the step](figures/temperature_along_path.png)
+![Temperature field around the scan track](figures/temperature_field.png)
 
-*Temperature (°C) along the scan path at the end of the step (t = 0.02 s), with the beam at x ≈ 12 mm.*
+*Temperature field around the scan track at the end of the step (t = 0.02 s). The colour scale runs from 730 °C (blue) to 2380 °C (red).*
 
 ## Model
 
 | | |
 |---|---|
-| Geometry | 21 × 2.5 × 10.07 mm block, half model about the scan line (y = 0). The top 0.07 mm is the powder layer. |
+| Geometry | 21 × 2.5 × 10.07 mm block, half model about the scan line (y = 0). The top 0.07 mm is partitioned as the powder layer, and further partitions refine the mesh near the surface. |
 | Mesh | 198,600 linear heat-transfer bricks (DC3D8). In the powder layer, 0.05 × 0.05 mm in plane with 4 elements through the thickness; coarser with depth. |
-| Material | Temperature-dependent conductivity, density and specific heat; latent heat 440 kJ/kg between 1605 °C (solidus) and 1655 °C (liquidus). Tables in `data/material_properties.csv`. |
+| Material | Ti-6Al-4V with the temperature-dependent conductivity, density and specific heat of the solid from An et al. (2021); latent heat 440 kJ/kg between 1605 °C (solidus) and 1655 °C (liquidus). Tables in `data/material_properties.csv`. |
 | Initial and boundary conditions | Whole block at 730 °C; bottom face held at 730 °C; radiation from the top surface to 730 °C, emissivity 0.7. |
-| Beam | 60 kV, 6.7 mA (402 W), absorption efficiency 0.9, Gaussian radius 0.55 mm, moving at 632.6 mm/s along x and starting one radius before the block. |
+| Beam | 60 kV, 6.7 mA (402 W), absorption efficiency 0.9, Gaussian beam with Φ = 0.55 mm, moving at 632.6 mm/s along x and starting 0.55 mm before the block. |
 | Step | 0.02 s transient with automatic increments, at most 100 °C change per increment. |
 
 ![Side view of the mesh, refined in the powder layer](figures/mesh_side_view.png)
 
 ### Heat source
 
-With the beam centre at $x_0 = -\phi + v t$, the surface intensity and the depth profile are
+With the beam centre at $x_0 = -\Phi + v t$, the surface intensity and the depth profile are
 
-$$H_s = \frac{2 U I_b}{\pi \phi^2} \exp\left(-\frac{2\left[(x - x_0)^2 + y^2\right]}{\phi^2}\right), \qquad I_z = \frac{1}{0.75}\left[-2.25\left(\frac{d}{S}\right)^2 + 1.5\,\frac{d}{S} + 0.75\right]$$
+$$H_s = \frac{2 U I_b}{\pi \Phi^2} \exp\left(-\frac{2\left[(x - x_0)^2 + y^2\right]}{\Phi^2}\right), \qquad I_z = \frac{1}{0.75}\left[-2.25\left(\frac{d}{S}\right)^2 + 1.5\,\frac{d}{S} + 0.75\right]$$
 
 where $d$ is the depth below the top surface and $S$ = 0.062 mm is the penetration depth. The body flux is $\eta H_s I_z / S$ for $0 \le d \le S$ and zero below. Integrated over the powder layer of this mesh, it gives 180.80 W, which is 99.95% of the nominal $\eta U I_b / 2$ = 180.90 W for the half model (`tools/check_heat_input.py`).
+
+## Results
+
+![Temperature along the scan path at the end of the step](figures/temperature_along_path.png)
+
+*Temperature (°C) along the scan path at the end of the step (t = 0.02 s), with the beam at x ≈ 12 mm. Ahead of the beam the powder stays at the 730 °C preheat. Just behind the peak, a plateau near the 1605 to 1655 °C melting range marks the solidifying melt pool.*
 
 ## Run it
 

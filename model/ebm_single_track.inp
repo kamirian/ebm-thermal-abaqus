@@ -15,7 +15,7 @@
       1,  215730,       1
 *Elset, elset=PART_ALL, generate
       1,  198600,       1
-*Solid Section, elset=PART_ALL, material=TI_ALLOY
+*Solid Section, elset=PART_ALL, material=TI6AL4V
 ,
 *End Part
 **
@@ -29,13 +29,13 @@ _TOP_SURFACE_S4, S4
 *End Assembly
 **
 ** ------------------------------------------------------------------
-** MATERIAL: titanium alloy, temperature-dependent thermal properties
+** MATERIAL: Ti-6Al-4V (solid), temperature-dependent thermal properties
 **   conductivity  mW/(mm K)    (numerically equal to W/(m K))
 **   density       tonne/mm^3   (4.42e-09 = 4420 kg/m^3)
 **   specific heat mJ/(tonne K) (5.46e+08 = 546 J/(kg K))
 **   latent heat   mJ/tonne between solidus 1605 C and liquidus 1655 C
 ** ------------------------------------------------------------------
-*Material, name=TI_ALLOY
+*Material, name=TI6AL4V
 *Conductivity
      6.2,  20.
  6.63507, 100.
