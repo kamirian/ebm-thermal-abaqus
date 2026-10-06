@@ -1,0 +1,63 @@
+property,temperature_C,value,unit
+thermal_conductivity,20,6.2,W/(m K)
+thermal_conductivity,100,6.63507,W/(m K)
+thermal_conductivity,200,7.1789,W/(m K)
+thermal_conductivity,300,7.72274,W/(m K)
+thermal_conductivity,400,8.26658,W/(m K)
+thermal_conductivity,500,8.81041,W/(m K)
+thermal_conductivity,600,9.35425,W/(m K)
+thermal_conductivity,700,9.89808,W/(m K)
+thermal_conductivity,750,10.17,W/(m K)
+thermal_conductivity,800,10.4419,W/(m K)
+thermal_conductivity,900,10.9858,W/(m K)
+thermal_conductivity,995,10.5024,W/(m K)
+thermal_conductivity,1100,12.0734,W/(m K)
+thermal_conductivity,1200,12.6173,W/(m K)
+thermal_conductivity,1300,13.1611,W/(m K)
+thermal_conductivity,1400,13.7049,W/(m K)
+thermal_conductivity,1500,14.2488,W/(m K)
+thermal_conductivity,1600,14.7926,W/(m K)
+thermal_conductivity,1650,15.0645,W/(m K)
+thermal_conductivity,1655,15.0917,W/(m K)
+density,25,4420,kg/m^3
+density,100,4410,kg/m^3
+density,200,4400,kg/m^3
+density,300,4380,kg/m^3
+density,400,4370,kg/m^3
+density,500,4350,kg/m^3
+density,600,4340,kg/m^3
+density,700,4320,kg/m^3
+density,800,4310,kg/m^3
+density,900,4290,kg/m^3
+density,995,4280,kg/m^3
+density,1100,4270,kg/m^3
+density,1200,4250,kg/m^3
+density,1300,4240,kg/m^3
+density,1400,4230,kg/m^3
+density,1500,4210,kg/m^3
+density,1600,4200,kg/m^3
+density,1650,4190,kg/m^3
+density,3317,3780,kg/m^3
+specific_heat,25,546,J/(kg K)
+specific_heat,100,562,J/(kg K)
+specific_heat,200,584,J/(kg K)
+specific_heat,300,606,J/(kg K)
+specific_heat,400,629,J/(kg K)
+specific_heat,500,651,J/(kg K)
+specific_heat,600,673,J/(kg K)
+specific_heat,700,694,J/(kg K)
+specific_heat,800,714,J/(kg K)
+specific_heat,900,734,J/(kg K)
+specific_heat,995,641,J/(kg K)
+specific_heat,1100,660,J/(kg K)
+specific_heat,1200,678,J/(kg K)
+specific_heat,1300,696,J/(kg K)
+specific_heat,1400,714,J/(kg K)
+specific_heat,1500,732,J/(kg K)
+specific_heat,1600,750,J/(kg K)
+specific_heat,1650,759,J/(kg K)
+specific_heat,1651,830,J/(kg K)
+specific_heat,1903,830,J/(kg K)
+latent_heat,,440000,J/kg
+solidus_temperature,,1605,C
+liquidus_temperature,,1655,C

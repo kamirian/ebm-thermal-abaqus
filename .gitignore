@@ -1,0 +1,16 @@
+*.odb
+*.lck
+*.msg
+*.sta
+*.dat
+*.prt
+*.com
+*.sim
+*.res
+*.log
+*.obj
+*.o
+*.rpy*
+abaqus.rpy*
+.DS_Store
+__pycache__/
